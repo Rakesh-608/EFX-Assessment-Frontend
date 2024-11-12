@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="brand">
+      <a routerLink="/">MyApp</a>
+    </div>
+    <div class="search-box">
+        <mat-form-field appearance="outline" floatLabel="auto">
+          
+          <input matInput placeholder="Search" />
+          <button mat-icon-button matSuffix>
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      
+    <div class="navbar-actions">
+      <button mat-button routerLink="/login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+      <button mat-button routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon>
+        Cart
+      </button>
+    </div>
+
+    
+  </div>
+</nav>
+

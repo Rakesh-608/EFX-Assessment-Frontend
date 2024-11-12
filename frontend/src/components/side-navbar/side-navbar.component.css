@@ -1,0 +1,104 @@
+/* Sidebar styling */
+.sidebar {
+  position: fixed; /* Fix the sidebar to the left */
+  top: 60px;        /* Below the top navbar (60px is the height of the navbar) */
+  left: 0;
+  width: 250px;     /* Sidebar width */
+  height: calc(100vh - 60px); /* Full height minus the top navbar height */
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 999;    /* Ensure it's below the top navbar */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+/* Each filter section inside the sidebar */
+.filter-section {
+  margin-bottom: 15px;
+}
+
+/* Filter buttons inside the sidebar */
+.filter-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Dropdown styling inside sidebar */
+.dropdown {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #f1f1f1;
+}
+
+/* Price Range Slider styling */
+.mat-slider {
+  width: 100%;
+  margin-top: 10px; /* Space above the slider */
+  background-color: #ffffff; /* Slider background */
+  padding: 0; /* Remove any padding */
+}
+
+.mat-slider .mat-slider-thumb {
+  background-color: #007bff; /* Thumb color */
+  border: 2px solid white; /* Thumb border color */
+}
+
+.mat-slider .mat-slider-track {
+  background-color: #d6d6d6; /* Track color */
+}
+
+.mat-slider .mat-slider-bar {
+  background-color: #007bff; /* Bar color */
+}
+
+.mat-slider .mat-slider-ticks {
+  display: none; /* Hide ticks */
+}
+
+/* Price Slider */
+.price-slider {
+  width: 100%;
+  margin: 15px 0;
+}
+
+/* Min and Max Price Display */
+.price-range-label {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.selected-price {
+  font-size: 16px;
+  color: #007bff;
+  margin-top: 10px;
+}
+
