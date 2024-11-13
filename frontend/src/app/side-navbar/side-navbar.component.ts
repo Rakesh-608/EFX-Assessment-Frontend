@@ -24,40 +24,71 @@ import { MatSliderModule } from '@angular/material/slider';
   styleUrl: './side-navbar.component.css',
 })
 export class SideNavbarComponent {
+  
   brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
   ratings = [1, 2, 3, 4, 5];
   categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
 
-  // Object to track which dropdown is visible
   showDropdowns: { [key: string]: boolean } = {
     brandDropdown: false,
     ratingDropdown: false,
     categoryDropdown: false,
     priceRangeDropdown: false
   };
-  
 
-  // Toggle the visibility of a dropdown
+  selectedBrands: string[] = [];
+  selectedRatings: number[] = [];
+  selectedCategories: string[] = [];
+
+  priceRange: number = 500;
+  minPrice: number = 0; 
+  maxPrice: number = 100000;
+
   toggleDropdown(dropdown: string): void {
     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
   }
 
-  priceRange: number = 500; // Default value for the price range
-  minPrice: number = 0;     // Minimum price for the range
-  maxPrice: number = 1000;  // Maximum price for the range
-  // filteredProducts = [this.products]
+  getSelectedArray(filterType: 'brand' | 'rating' | 'category'): string[] | number[] {
+    switch (filterType) {
+      case 'brand':
+        return this.selectedBrands;
+      case 'rating':
+        return this.selectedRatings;
+      case 'category':
+        return this.selectedCategories;
+      default:
+        throw new Error(`Unknown filter type: ${filterType}`);
+    }
+  }
 
+  onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
+    const selectedArray = this.getSelectedArray(filterType);
 
-  onPriceChange() {
+    if (checked) {
+      selectedArray.push(value as never);
+    } else {
+      const index = selectedArray.indexOf(value as never);
+      if (index > -1) {
+        selectedArray.splice(index, 1);
+      }
+    }
+
+    console.log(`Selected ${filterType}:`, selectedArray);
+  }
+
+  onPriceChange(): void {
     console.log('Selected Price Range:', this.priceRange);
     this.filterProductsByPrice();
   }
 
-  // Method to filter products based on price range
   filterProductsByPrice() {
-    // this.filteredProducts = this.products.filter(product => 
-    //   product.price <= this.priceRange
-    // );
-    console.log("filtered by range")
+    console.log("Filtered products by price range");
+  }
+
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+    return `${value}`;
   }
 }
