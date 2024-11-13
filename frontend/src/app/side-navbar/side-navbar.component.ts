@@ -1,10 +1,72 @@
+// import { CommonModule } from '@angular/common';
+// import { Component, NgModule } from '@angular/core';
+// import { FormsModule, NgModel } from '@angular/forms';
+// import { MatCheckboxModule } from '@angular/material/checkbox';
+// import { MatOption } from '@angular/material/core';
+// import { MatFormField, MatLabel } from '@angular/material/form-field';
+// import { MatRadioModule } from '@angular/material/radio';
+// import { MatSliderModule } from '@angular/material/slider';
+
+// @Component({
+//   selector: 'app-side-navbar',
+//   standalone: true,
+//   imports: [
+//     MatCheckboxModule,
+//     MatRadioModule,
+//     MatSliderModule,
+//     CommonModule,
+//     FormsModule,
+//     MatOption,
+//     MatLabel,
+//     MatFormField,
+//   ],
+//   templateUrl: './side-navbar.component.html',
+//   styleUrl: './side-navbar.component.css',
+// })
+// export class SideNavbarComponent {
+//   brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
+//   ratings = [1, 2, 3, 4, 5];
+//   categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
+
+//   // Object to track which dropdown is visible
+//   showDropdowns: { [key: string]: boolean } = {
+//     brandDropdown: false,
+//     ratingDropdown: false,
+//     categoryDropdown: false,
+//     priceRangeDropdown: false
+//   };
+  
+
+//   // Toggle the visibility of a dropdown
+//   toggleDropdown(dropdown: string): void {
+//     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
+//   }
+
+//   priceRange: number = 500; // Default value for the price range
+//   minPrice: number = 0;     // Minimum price for the range
+//   maxPrice: number = 1000;  // Maximum price for the range
+//   // filteredProducts = [this.products]
+
+
+//   onPriceChange() {
+//     console.log('Selected Price Range:', this.priceRange);
+//     this.filterProductsByPrice();
+//   }
+
+//   // Method to filter products based on price range
+//   filterProductsByPrice() {
+//     // this.filteredProducts = this.products.filter(product => 
+//     //   product.price <= this.priceRange
+//     // );
+//     console.log("filtered by range")
+//   }
+// }
+
+
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatOption } from '@angular/material/core';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
@@ -12,16 +74,12 @@ import { MatSliderModule } from '@angular/material/slider';
   standalone: true,
   imports: [
     MatCheckboxModule,
-    MatRadioModule,
     MatSliderModule,
     CommonModule,
-    FormsModule,
-    MatOption,
-    MatLabel,
-    MatFormField,
+    FormsModule
   ],
   templateUrl: './side-navbar.component.html',
-  styleUrl: './side-navbar.component.css',
+  styleUrls: ['./side-navbar.component.css'],
 })
 export class SideNavbarComponent {
   
@@ -40,9 +98,15 @@ export class SideNavbarComponent {
   selectedRatings: number[] = [];
   selectedCategories: string[] = [];
 
+<<<<<<< HEAD:frontend/src/app/side-navbar/side-navbar.component.ts
   priceRange: number = 500;
   minPrice: number = 0; 
   maxPrice: number = 100000;
+=======
+  priceRange: number = 500; // Default value for the price range
+  minPrice: number = 0;     // Minimum price for the range
+  maxPrice: number = 100000;  // Maximum price for the range
+>>>>>>> a3f8ad691e87b2cd69575127ee5dfd43cb95c282:frontend/src/components/side-navbar/side-navbar.component.ts
 
   toggleDropdown(dropdown: string): void {
     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
@@ -60,6 +124,7 @@ export class SideNavbarComponent {
         throw new Error(`Unknown filter type: ${filterType}`);
     }
   }
+<<<<<<< HEAD:frontend/src/app/side-navbar/side-navbar.component.ts
 
   onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
     const selectedArray = this.getSelectedArray(filterType);
@@ -76,6 +141,24 @@ export class SideNavbarComponent {
     console.log(`Selected ${filterType}:`, selectedArray);
   }
 
+=======
+
+  onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
+    const selectedArray = this.getSelectedArray(filterType);
+
+    if (checked) {
+      selectedArray.push(value as never);
+    } else {
+      const index = selectedArray.indexOf(value as never);
+      if (index > -1) {
+        selectedArray.splice(index, 1);
+      }
+    }
+
+    console.log(`Selected ${filterType}:`, selectedArray);
+  }
+
+>>>>>>> a3f8ad691e87b2cd69575127ee5dfd43cb95c282:frontend/src/components/side-navbar/side-navbar.component.ts
   onPriceChange(): void {
     console.log('Selected Price Range:', this.priceRange);
     this.filterProductsByPrice();
