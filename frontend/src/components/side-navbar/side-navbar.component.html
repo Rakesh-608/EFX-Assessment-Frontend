@@ -1,4 +1,4 @@
-<div class="sidebar">
+<!-- <div class="sidebar">
   <div class="filter-section">
     <button (click)="toggleDropdown('brandDropdown')" class="filter-btn">
       Brand
@@ -63,4 +63,84 @@
 
 </div>
 
+ -->
 
+
+ <div class="sidebar">
+  <div class="filter-section">
+    <button (click)="toggleDropdown('brandDropdown')" class="filter-btn">
+      Brand
+    </button>
+    <div *ngIf="showDropdowns['brandDropdown']" class="dropdown">
+      <ul>
+        <li *ngFor="let brand of brands">
+          <mat-checkbox 
+            [checked]="selectedBrands.includes(brand)"
+            (change)="onCheckboxChange('brand', brand, $event.checked)">
+            {{ brand }}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <button (click)="toggleDropdown('ratingDropdown')" class="filter-btn">
+      Rating
+    </button>
+    <div *ngIf="showDropdowns['ratingDropdown']" class="dropdown">
+      <ul>
+        <li *ngFor="let rating of ratings">
+          <mat-checkbox 
+            [checked]="selectedRatings.includes(rating)"
+            (change)="onCheckboxChange('rating', rating, $event.checked)">
+            {{ rating }} Stars
+          </mat-checkbox>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <button (click)="toggleDropdown('categoryDropdown')" class="filter-btn">
+      Category
+    </button>
+    <div *ngIf="showDropdowns['categoryDropdown']" class="dropdown">
+      <ul>
+        <li *ngFor="let category of categories">
+          <mat-checkbox 
+            [checked]="selectedCategories.includes(category)"
+            (change)="onCheckboxChange('category', category, $event.checked)">
+            {{ category }}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="filter-section">
+    <button (click)="toggleDropdown('priceRangeDropdown')" class="filter-btn">
+      Price Range
+    </button>
+    <div *ngIf="showDropdowns['priceRangeDropdown']" class="dropdown">
+      <mat-slider
+        min="0"
+        max="100000"
+        step="1000"
+        showTickMarks
+        discrete
+        [displayWith]="formatLabel"
+        [(ngModel)]="priceRange"
+        (input)="onPriceChange()">
+        <input matSliderThumb>
+      </mat-slider>
+  
+      <div class="selected-price">
+        <span>Selected Price: ${{ formatLabel(priceRange) }}</span>
+      </div>
+    </div>
+  </div>
+  
+</div>
