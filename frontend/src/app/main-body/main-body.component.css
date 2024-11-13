@@ -1,0 +1,6 @@
+main{
+    position: fixed;
+    left: 290px;
+    top: 60px;
+    height: calc(100vh-60px);
+}
