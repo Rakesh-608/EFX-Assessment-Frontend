@@ -63,7 +63,7 @@
   width: 100%;
   margin-top: 10px; /* Space above the slider */
   background-color: #ffffff; /* Slider background */
-  padding: 0; /* Remove any padding */
+  padding: 10px 10px; /* Remove any padding */
 }
 
 .mat-slider .mat-slider-thumb {
