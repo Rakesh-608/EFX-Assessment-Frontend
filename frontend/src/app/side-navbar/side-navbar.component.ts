@@ -98,15 +98,9 @@ export class SideNavbarComponent {
   selectedRatings: number[] = [];
   selectedCategories: string[] = [];
 
-<<<<<<< HEAD:frontend/src/app/side-navbar/side-navbar.component.ts
-  priceRange: number = 500;
-  minPrice: number = 0; 
-  maxPrice: number = 100000;
-=======
   priceRange: number = 500; // Default value for the price range
   minPrice: number = 0;     // Minimum price for the range
   maxPrice: number = 100000;  // Maximum price for the range
->>>>>>> a3f8ad691e87b2cd69575127ee5dfd43cb95c282:frontend/src/components/side-navbar/side-navbar.component.ts
 
   toggleDropdown(dropdown: string): void {
     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
@@ -124,7 +118,6 @@ export class SideNavbarComponent {
         throw new Error(`Unknown filter type: ${filterType}`);
     }
   }
-<<<<<<< HEAD:frontend/src/app/side-navbar/side-navbar.component.ts
 
   onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
     const selectedArray = this.getSelectedArray(filterType);
@@ -141,24 +134,6 @@ export class SideNavbarComponent {
     console.log(`Selected ${filterType}:`, selectedArray);
   }
 
-=======
-
-  onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
-    const selectedArray = this.getSelectedArray(filterType);
-
-    if (checked) {
-      selectedArray.push(value as never);
-    } else {
-      const index = selectedArray.indexOf(value as never);
-      if (index > -1) {
-        selectedArray.splice(index, 1);
-      }
-    }
-
-    console.log(`Selected ${filterType}:`, selectedArray);
-  }
-
->>>>>>> a3f8ad691e87b2cd69575127ee5dfd43cb95c282:frontend/src/components/side-navbar/side-navbar.component.ts
   onPriceChange(): void {
     console.log('Selected Price Range:', this.priceRange);
     this.filterProductsByPrice();
