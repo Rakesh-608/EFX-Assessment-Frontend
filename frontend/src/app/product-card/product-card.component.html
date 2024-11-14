@@ -1,7 +1,18 @@
-<div class="product-card" [ngClass]="{ 'selected': isSelected }" (click)="onSelect()">
+<div
+  class="product-card"
+  [ngClass]="{ selected: isSelected }"
+  (click)="onSelect()"
+>
   <img [src]="product.imageUrl" alt="{{ product.name }}" />
   <h2>{{ product.name }}</h2>
-  <p>{{ product.description }}</p>
   <p>Price: ${{ product.price }}</p>
-  <p>Rating: {{ product.rating }} / 5</p>
+
+  <div *ngIf="isSelected">
+    <p>{{ product.description }}</p>
+    <p>Rating: {{ product.rating }} / 5</p>
+    <a mat-stroked-button (click)="toggleCart()">
+      <mat-icon>shopping_cart</mat-icon>
+      {{ isInCart ? "Remove from Cart" : "Add to Cart" }}
+    </a>
+  </div>
 </div>

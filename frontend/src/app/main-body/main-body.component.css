@@ -1,9 +1,9 @@
-main{
-    position: absolute;
-    left: 290px;
-    top: 60px;
-    height: calc(100vh-60px);
-    padding-top: 20px;
+main {
+  position: absolute;
+  left: 290px;
+  top: 60px;
+  height: calc(100vh - 60px);
+  padding-top: 20px;
 }
 
 .product-list {
@@ -17,3 +17,5 @@ main{
   filter: blur(4px);
   pointer-events: none;
 }
+
+

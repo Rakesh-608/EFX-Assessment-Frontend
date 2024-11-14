@@ -1,34 +1,38 @@
-/* .card{
-    max-width: 300px;
-    max-height: 500px;
+.product-card {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-.example-card {
-    max-width: 400px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  } */
 
-  .product-card {
-    width: 150px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .product-card.selected {
-    width: 300px;
-    transform: scale(1.1);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 2;
-    background-color: white;
-    transform: translate(-50%, -50%);
-  }
-  
+.product-card.selected {
+  width: 300px;
+  transform: scale(1.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  background-color: white;
+  transform: translate(-50%, -50%);
+}
+
+.product-card.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}

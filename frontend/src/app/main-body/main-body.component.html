@@ -5,38 +5,10 @@
       [product]="product"
       [isSelected]="isProductSelected(product.id)"
       (selectProduct)="onSelectProduct(product.id)"
-      [ngClass]="{ 'blurred': selectedProductId && !isProductSelected(product.id) }">
+      [ngClass]="{
+        blurred: selectedProductId && !isProductSelected(product.id)
+      }"
+    >
     </app-product-card>
   </div>
 </main>
-
-<!-- <div class="product-list">
-    <div
-      *ngFor="let product of products"
-      class="product-card"
-      [ngClass]="{ 'selected': isProductSelected(product.id), 'blurred': selectedProductId && !isProductSelected(product.id) }"
-      (click)="selectProduct(product.id)"
-    >
-      <img [src]="product.imageUrl" alt="{{ product.name }}" />
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <p>Price: ${{ product.price }}</p>
-      <p>Rating: {{ product.rating }} / 5</p>
-    </div>
-  
-    <div *ngIf="selectedProductId" class="selected-product-details">
-      <ng-container *ngIf="products.find(p => p.id === selectedProductId) as selectedProduct">
-        <img [src]="selectedProduct.imageUrl" alt="{{ selectedProduct.name }}" />
-        <h2>{{ selectedProduct.name }}</h2>
-        <p>{{ selectedProduct.description }}</p>
-        <p>Price: ${{ selectedProduct.price }}</p>
-        <p>Rating: {{ selectedProduct.rating }} / 5</p>
-      </ng-container>
-    </div>
-  </div> -->
-
-
-  
-  
-  
-  
