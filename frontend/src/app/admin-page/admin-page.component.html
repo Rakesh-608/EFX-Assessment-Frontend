@@ -1,0 +1,122 @@
+<app-top-navbar/>
+<main>
+    <section>
+        <div class="add-item">
+            <form [formGroup]="addItem" (ngSubmit)="onSubmit()" class="add-item-group">
+                <fieldset>
+                    <legend>Add an item</legend>
+
+                    <div>
+                        <label for="name">Name</label>
+                        <input id="name" formControlName="name" />
+                        <div *ngIf="addItem.get('name')?.invalid && addItem.get('name')?.touched" class="warning">
+                            *Name is required.
+                        </div>
+                    </div>
+                
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea id="description" formControlName="description"></textarea>
+                        <div *ngIf="addItem.get('description')?.invalid && addItem.get('description')?.touched" class="warning">
+                            *Description is required.
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="price">Price</label>
+                        <input id="price" type="number" formControlName="price" />
+                        <div *ngIf="addItem.get('price')?.invalid && addItem.get('price')?.touched" class="warning">
+                            *Enter a valid price (non-negative).
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="categoryId">Category ID</label>
+                        <input id="categoryId" formControlName="categoryId" />
+                        <div *ngIf="addItem.get('categoryId')?.invalid && addItem.get('categoryId')?.touched" class="warning">
+                            *Category ID is required.
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="imageUrl">Image URL</label>
+                        <input id="imageUrl" type="url" formControlName="imageUrl" />
+                        <div *ngIf="addItem.get('imageUrl')?.invalid && addItem.get('imageUrl')?.touched" class="warning">
+                            *Enter a valid URL ending in .png or .jpg.
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="addItem.invalid">Submit</button>
+                    </div>
+            </fieldset>
+            </form>
+              
+        </div>
+
+
+        <div class="update-item">
+            <form [formGroup]="updateItem" (ngSubmit)="onSubmit()" class="add-item-group">
+                <fieldset>
+                    <legend>Update an item</legend>
+
+                    <div>
+                        <label for="id">Id</label>
+                        <input id="id" formControlName="id" />
+                        <div *ngIf="updateItem.get('id')?.invalid && updateItem.get('id')?.touched" class="warning">
+                            *Id is required.
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="name">Name</label>
+                        <input id="name" formControlName="name" />
+                        <div *ngIf="updateItem.get('name')?.invalid && updateItem.get('name')?.touched" class="warning">
+                            *Name is required.
+                        </div>
+                    </div>
+                
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea id="description" formControlName="description"></textarea>
+                        <div *ngIf="updateItem.get('description')?.invalid && updateItem.get('description')?.touched" class="warning">
+                            *Description is required.
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="price">Price</label>
+                        <input id="price" type="number" formControlName="price" />
+                        <div *ngIf="updateItem.get('price')?.invalid && updateItem.get('price')?.touched" class="warning">
+                            *Enter a valid price (non-negative).
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="categoryId">Category ID</label>
+                        <input id="categoryId" formControlName="categoryId" />
+                        <div *ngIf="updateItem.get('categoryId')?.invalid && updateItem.get('categoryId')?.touched" class="warning">
+                            *Category ID is required.
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="imageUrl">Image URL</label>
+                        <input id="imageUrl" type="url" formControlName="imageUrl" />
+                        <div *ngIf="updateItem.get('imageUrl')?.invalid && updateItem.get('imageUrl')?.touched" class="warning">
+                            *Enter a valid URL ending in .png or .jpg.
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="updateItem.invalid">Submit</button>
+                    </div>
+            </fieldset>
+            </form>
+              
+        </div>
+    </section>
+    <section>
+        <div>
+            
+        </div>
+    </section>
+</main>
