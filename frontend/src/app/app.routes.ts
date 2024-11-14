@@ -4,6 +4,6 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 
 export const routes: Routes = [
     {path: 'user-page', component: UserPageComponent},
-    {path: '', redirectTo: '/user-page', pathMatch: 'full' },
+    // {path: '', redirectTo: '/user-page', pathMatch: 'full' },
     {path: 'admin-page', component: AdminPageComponent},
 ];
