@@ -13,143 +13,158 @@ import { CommonModule } from '@angular/common';
   styleUrl: './main-body.component.css'
 })
 export class MainBodyComponent {
-  products: Product[] =[
+  products: Product[] = [
     {
       id: '1',
-      name: 'Product 1',
+      productName: 'Product 1',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 1',
       price: 100,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '2',
-      name: 'Product 2',
+      productName: 'Product 2',
+      brand: 'Brand B',
+      categoryName: 'B',
       description: 'Description of Product 2',
       price: 200,
-      categoryId: 'B',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
+      rating: 5,
     },
     {
       id: '3',
-      name: 'Product 3',
+      productName: 'Product 3',
+      brand: 'Brand C',
+      categoryName: 'C',
       description: 'Description of Product 3',
       price: 150,
-      categoryId: 'C',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 3
+      rating: 3,
     },
     {
       id: '4',
-      name: 'Product 4',
+      productName: 'Product 4',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 4',
       price: 75,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '5',
-      name: 'Product 5',
+      productName: 'Product 5',
+      brand: 'Brand B',
+      categoryName: 'B',
       description: 'Description of Product 5',
       price: 300,
-      categoryId: 'B',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
+      rating: 5,
     },
     {
       id: '6',
-      name: 'Product 6',
+      productName: 'Product 6',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 6',
       price: 220,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '7',
-      name: 'Product 7',
+      productName: 'Product 7',
+      brand: 'Brand C',
+      categoryName: 'C',
       description: 'Description of Product 7',
       price: 180,
-      categoryId: 'C',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 3
+      rating: 3,
     },
     {
       id: '8',
-      name: 'Product 8',
+      productName: 'Product 8',
+      brand: 'Brand B',
+      categoryName: 'B',
       description: 'Description of Product 8',
       price: 500,
-      categoryId: 'B',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
+      rating: 5,
     },
     {
       id: '9',
-      name: 'Product 9',
+      productName: 'Product 9',
+      brand: 'Brand C',
+      categoryName: 'C',
       description: 'Description of Product 9',
       price: 120,
-      categoryId: 'C',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '10',
-      name: 'Product 10',
+      productName: 'Product 10',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 10',
       price: 95,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 3
+      rating: 3,
     },
     {
       id: '11',
-      name: 'Product 11',
+      productName: 'Product 11',
+      brand: 'Brand B',
+      categoryName: 'B',
       description: 'Description of Product 11',
       price: 450,
-      categoryId: 'B',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
+      rating: 5,
     },
     {
       id: '12',
-      name: 'Product 12',
+      productName: 'Product 12',
+      brand: 'Brand C',
+      categoryName: 'C',
       description: 'Description of Product 12',
       price: 130,
-      categoryId: 'C',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '13',
-      name: 'Product 13',
+      productName: 'Product 13',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 13',
       price: 110,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
+      rating: 5,
     },
     {
       id: '14',
-      name: 'Product 14',
+      productName: 'Product 14',
+      brand: 'Brand B',
+      categoryName: 'B',
       description: 'Description of Product 14',
       price: 250,
-      categoryId: 'B',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 4
+      rating: 4,
     },
     {
       id: '15',
-      name: 'Product 15',
+      productName: 'Product 15',
+      brand: 'Brand A',
+      categoryName: 'A',
       description: 'Description of Product 15',
       price: 320,
-      categoryId: 'A',
       imageUrl: 'https://via.placeholder.com/150',
-      rating: 5
-    }
-  ]
+      rating: 5,
+    },
+  ];
  
   selectedProductId: string | null = null;
 

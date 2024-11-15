@@ -61,7 +61,7 @@ export class AdminPageComponent {
   onSubmit(): void {
     if (this.addItem.valid) {
       console.log('Form Submitted', this.addItem.value);
-      this.productService.createExpense(this.addItem.value).subscribe(
+      this.productService.addItem(this.addItem.value).subscribe(
         (data) => console.log(data),
         (error) => console.log(error)
       )
