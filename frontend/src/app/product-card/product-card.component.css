@@ -67,7 +67,7 @@
 }
 
 .product-card.selected {
-  width: 300px;
+  width: 800px;
   transform: scale(1.1);
   position: fixed;
   top: 50%;
@@ -75,6 +75,7 @@
   z-index: 2;
   background-color: white;
   transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .product-card.blurred {
