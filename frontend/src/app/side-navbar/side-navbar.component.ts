@@ -68,6 +68,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
+import { FilterProductService } from '../filter-product.service';
 
 @Component({
   selector: 'app-side-navbar',
@@ -82,6 +83,8 @@ import { MatSliderModule } from '@angular/material/slider';
   styleUrls: ['./side-navbar.component.css'],
 })
 export class SideNavbarComponent {
+
+  constructor(private filterProductService: FilterProductService) {}
   
   brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
   ratings = [1, 2, 3, 4, 5];
@@ -148,5 +151,10 @@ export class SideNavbarComponent {
       return Math.round(value / 1000) + 'k';
     }
     return `${value}`;
+  }
+
+  applyFilter() {
+    this.filterProductService.setFilters('Electronics', 'Dell', 0, 100000, 0)
+    this.filterProductService.getFilteredData()
   }
 }

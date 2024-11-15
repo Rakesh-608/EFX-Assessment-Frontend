@@ -126,7 +126,7 @@
         class="update-item-group"
       >
         <fieldset>
-          <legend>update an item</legend>
+          <legend>Update an item</legend>
 
           <div>
             <label for="id">Product ID</label>
@@ -256,25 +256,29 @@
     </div>
     <div class="update-item">
       <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend>Delete an item</legend>
+
         <div>
-          <label for="id">Enter ID to Delete:</label>
-          <input id="id" formControlName="id" type="text" />
+            <label for="id">Enter ID to Delete:</label>
+            <input id="id" formControlName="id" type="text" />
         </div>
 
         <div
           *ngIf="deleteForm.get('id')?.invalid && deleteForm.get('id')?.touched"
           class="error"
-        >
+          >
           <small *ngIf="deleteForm.get('id')?.hasError('required')"
-            >ID is required.</small
+          >ID is required.</small
           >
           <small *ngIf="deleteForm.get('id')?.hasError('pattern')"
-            >ID cannot contain spaces.</small
+          >ID cannot contain spaces.</small
           >
         </div>
-
+        
         <button type="submit" [disabled]="deleteForm.invalid"><mat-icon>delete</mat-icon></button>
         
+        </fieldset>
       </form>
     </div>
   </section>

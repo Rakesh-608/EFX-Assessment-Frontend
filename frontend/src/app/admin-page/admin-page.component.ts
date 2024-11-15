@@ -38,7 +38,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern(/\.(jpg|png)$/i), // Ensures the URL ends with .jpg or .png
+          Validators.pattern(/\.(jpg|png|jpeg)$/i), // Ensures the URL ends with .jpg or .png
         ],
       ],
       rating: [
@@ -68,7 +68,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern(/\.(jpg|png)$/i), // Ensures the URL ends with .jpg or .png
+          Validators.pattern(/\.(jpg|png|jpeg)$/i), // Ensures the URL ends with .jpg or .png
         ],
       ],
       rating: [
@@ -90,7 +90,7 @@ export class AdminPageComponent {
   onSubmit(): void {
     if (this.addItem.valid) {
       console.log('Form Submitted', this.addItem.value);
-      this.productService.createExpense(this.addItem.value).subscribe(
+      this.productService.addItem(this.addItem.value).subscribe(
         (data) => console.log("Fetched data", data),
         (error) => console.log(error)
       )
