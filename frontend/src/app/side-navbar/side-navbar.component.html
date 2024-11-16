@@ -118,9 +118,26 @@
     </div>
   </div>
 
-
-
   <div class="filter-section">
+    <button (click)="toggleDropdown('priceDropdown')" class="filter-btn">
+      Price
+    </button>
+    <div *ngIf="showDropdowns['priceDropdown']" class="dropdown">
+      <ul>
+        <li *ngFor="let price of prices">
+          <mat-checkbox 
+            [checked]="selectedPrices.includes(price)"
+            (change)="onCheckboxChange('price', price, $event.checked)">
+            {{ price }}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="filter-section">
     <button (click)="toggleDropdown('priceRangeDropdown')" class="filter-btn">
       Price Range
     </button>
@@ -133,7 +150,8 @@
         discrete
         [displayWith]="formatLabel"
         [(ngModel)]="priceRange"
-        (input)="onPriceChange()">
+        (input)="onPriceChange()"
+        (change)="onPriceChangeComplete()">
         <input matSliderThumb>
       </mat-slider>
   
@@ -141,12 +159,13 @@
         <span>Selected Price: ${{ formatLabel(priceRange) }}</span>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div>
     <button (click)="applyFilter()" class="filter-btn">
       Apply Filter
     </button>
   </div>
-  
+  <!-- <button mat-raised-button color="primary" (click)="applyFilter()">Apply Filter</button> -->
 </div>
+

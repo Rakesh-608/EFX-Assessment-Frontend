@@ -1,74 +1,10 @@
-// import { CommonModule } from '@angular/common';
-// import { Component, NgModule } from '@angular/core';
-// import { FormsModule, NgModel } from '@angular/forms';
-// import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatOption } from '@angular/material/core';
-// import { MatFormField, MatLabel } from '@angular/material/form-field';
-// import { MatRadioModule } from '@angular/material/radio';
-// import { MatSliderModule } from '@angular/material/slider';
-
-// @Component({
-//   selector: 'app-side-navbar',
-//   standalone: true,
-//   imports: [
-//     MatCheckboxModule,
-//     MatRadioModule,
-//     MatSliderModule,
-//     CommonModule,
-//     FormsModule,
-//     MatOption,
-//     MatLabel,
-//     MatFormField,
-//   ],
-//   templateUrl: './side-navbar.component.html',
-//   styleUrl: './side-navbar.component.css',
-// })
-// export class SideNavbarComponent {
-//   brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
-//   ratings = [1, 2, 3, 4, 5];
-//   categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
-
-//   // Object to track which dropdown is visible
-//   showDropdowns: { [key: string]: boolean } = {
-//     brandDropdown: false,
-//     ratingDropdown: false,
-//     categoryDropdown: false,
-//     priceRangeDropdown: false
-//   };
-  
-
-//   // Toggle the visibility of a dropdown
-//   toggleDropdown(dropdown: string): void {
-//     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
-//   }
-
-//   priceRange: number = 500; // Default value for the price range
-//   minPrice: number = 0;     // Minimum price for the range
-//   maxPrice: number = 1000;  // Maximum price for the range
-//   // filteredProducts = [this.products]
-
-
-//   onPriceChange() {
-//     console.log('Selected Price Range:', this.priceRange);
-//     this.filterProductsByPrice();
-//   }
-
-//   // Method to filter products based on price range
-//   filterProductsByPrice() {
-//     // this.filteredProducts = this.products.filter(product => 
-//     //   product.price <= this.priceRange
-//     // );
-//     console.log("filtered by range")
-//   }
-// }
-
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { FilterProductService } from '../filter-product.service';
+import { min } from 'rxjs';
 
 @Component({
   selector: 'app-side-navbar',
@@ -77,7 +13,8 @@ import { FilterProductService } from '../filter-product.service';
     MatCheckboxModule,
     MatSliderModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './side-navbar.component.html',
   styleUrls: ['./side-navbar.component.css'],
@@ -86,30 +23,29 @@ export class SideNavbarComponent {
 
   constructor(private filterProductService: FilterProductService) {}
   
-  brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
+  brands = ['Brand A','Brand B','Brand C','Brand D'];
   ratings = [1, 2, 3, 4, 5];
-  categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
+  categories = ['Electronics','Clothing','Home Appliances','Books'];
+  prices= [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
 
   showDropdowns: { [key: string]: boolean } = {
     brandDropdown: false,
     ratingDropdown: false,
     categoryDropdown: false,
+    priceDropdown: false,
     priceRangeDropdown: false
   };
 
   selectedBrands: string[] = [];
   selectedRatings: number[] = [];
   selectedCategories: string[] = [];
-
-  priceRange: number = 500; // Default value for the price range
-  minPrice: number = 0;     // Minimum price for the range
-  maxPrice: number = 100000;  // Maximum price for the range
+  selectedPrices: number[] = []
 
   toggleDropdown(dropdown: string): void {
     this.showDropdowns[dropdown] = !this.showDropdowns[dropdown];
   }
 
-  getSelectedArray(filterType: 'brand' | 'rating' | 'category'): string[] | number[] {
+  getSelectedArray(filterType: 'brand' | 'rating' | 'category' | 'price'): string[] | number[] {
     switch (filterType) {
       case 'brand':
         return this.selectedBrands;
@@ -117,44 +53,79 @@ export class SideNavbarComponent {
         return this.selectedRatings;
       case 'category':
         return this.selectedCategories;
+      case 'price':
+        return this.selectedPrices;
       default:
         throw new Error(`Unknown filter type: ${filterType}`);
     }
   }
 
-  onCheckboxChange(filterType: 'brand' | 'rating' | 'category', value: string | number, checked: boolean): void {
+  onCheckboxChange(filterType: 'brand' | 'rating' | 'category' | 'price', value: string | number, checked: boolean): void {
     const selectedArray = this.getSelectedArray(filterType);
 
     if (checked) {
-      selectedArray.push(value as never);
+      (selectedArray as (string | number)[]).push(value);
     } else {
-      const index = selectedArray.indexOf(value as never);
+      const index = (selectedArray as (string | number)[]).indexOf(value);
       if (index > -1) {
-        selectedArray.splice(index, 1);
+        (selectedArray as (string | number)[]).splice(index, 1);
       }
     }
-
+    
     console.log(`Selected ${filterType}:`, selectedArray);
   }
 
-  onPriceChange(): void {
-    console.log('Selected Price Range:', this.priceRange);
-    this.filterProductsByPrice();
+ 
+getMinimumRating(selectedRatings: number[]): number {
+  if (selectedRatings.length === 0) {
+    return 0;
   }
+  const minRating = Math.min(...selectedRatings);
+  return minRating;
+}
 
-  filterProductsByPrice() {
-    console.log("Filtered products by price range");
+getMinimumPrice(selectedPrices: number[]): number {
+  if (this.selectedPrices.length === 0 || this.selectedPrices.length === 1) {
+    return 0;
   }
+  const minRating = Math.min(...this.selectedPrices);
+  return minRating;
+}
 
-  formatLabel(value: number): string {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-    return `${value}`;
+getMaximumPrice(selectedRatings: number[]): number {
+  if (this.selectedPrices.length === 0) {
+    return 100000;
   }
+  const maxRating = Math.max(...this.selectedPrices);
+  return maxRating;
+}
+
+getBrands(selectedBrands: string[]): string[] {
+  if (this.selectedBrands.length === 0) {
+    return this.brands;
+  }
+  return this.selectedBrands;
+}
+
+
+getCategories(selectedCategories: string[]): string[] {
+  if (this.selectedCategories.length === 0) {
+    return this.categories;
+  }
+  return this.selectedCategories;
+}
+
 
   applyFilter() {
-    this.filterProductService.setFilters('Electronics', 'Dell', 0, 100000, 0)
-    this.filterProductService.getFilteredData()
+    this.filterProductService.setFilters(
+      // this.selectedCategories, 
+      this.getCategories(this.selectedCategories),
+      this.getBrands(this.selectedBrands),
+      this.getMinimumPrice(this.selectedPrices), 
+      this.getMaximumPrice(this.selectedPrices), 
+      this.getMinimumRating(this.selectedRatings)
+    );
+    this.filterProductService.getFilteredData();
   }
+
 }

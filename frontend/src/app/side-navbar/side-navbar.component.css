@@ -102,3 +102,30 @@
   margin-top: 10px;
 }
 
+
+/* Targeting the raised button inside a specific component */
+:host ::ng-deep button.mat-raised-button {
+  background-color: #28a745;  /* Green background */
+  color: white;  /* White text */
+  border-radius: 8px;  /* Rounded corners */
+  font-size: 14px;
+  padding: 12px 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+:host ::ng-deep button.mat-raised-button:hover {
+  background-color: #218838;  /* Darker green on hover */
+  transform: translateY(-2px);  /* Slight lift on hover */
+}
+
+:host ::ng-deep button.mat-raised-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);  /* Green focus state */
+}
+
+:host ::ng-deep button.mat-raised-button:active {
+  background-color: #1e7e34;  /* Even darker green on active */
+  box-shadow: none;  /* Remove shadow on active state */
+}
+

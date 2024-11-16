@@ -12,12 +12,13 @@ export class FilterProductService {
 
   url = "http://localhost:8000/products"
   data!: Product[]
-  filters = {category: '', brand: '', minPrice: 0, maxPrice: 1000000, minRating: 0}
+  categoryList: string[]=[]
+  filters = {category: [''], brand: [''], minPrice: 0, maxPrice: 1000000, minRating: -1}
 
   
   setFilters(
-    category: string,
-    brand: string,
+    category: string[],
+    brand: string[],
     minPrice: number,
     maxPrice: number,
     minRating: number
@@ -39,16 +40,20 @@ export class FilterProductService {
       'minRating': this.filters.minRating
     })
     
-    console.log(params.get('brand'));
-
-    return this.http.get<Product[]>(this.url+`/filters`, {params})
+    console.log("Brands: "+params.get('brand')+" from filter service");
+    console.log("Categories: "+params.get('categoryName')+" from filter service")
+    console.log("MinPrice: "+params.get('minPrice')+" from filter service")
+    console.log("Maxprice: "+params.get('maxPrice')+" from filter service")
+    console.log("MinRating: "+params.get('minRating')+" from filter service")
+    console.log(`Params: ${params}`)
+    return this.http.get<Product[]>(this.url+`/filters`, {params: params})
   }
 
   getFilteredData() {
     setTimeout(() => {
       this.setFilteredData().subscribe(
         (data) => {
-          console.log("Data fetched", data);
+          console.log("Data fetched from FilterService getFilterMethod()", data);
           this.data = data
           console.log(this.data);
           
@@ -58,4 +63,5 @@ export class FilterProductService {
     }, 1000);
     return this.data
   }
+
 }
