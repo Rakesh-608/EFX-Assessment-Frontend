@@ -1,0 +1,96 @@
+/* .product-card {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-card.selected {
+  width: 300px;
+  transform: scale(1.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  background-color: white;
+  transform: translate(-50%, -50%);
+}
+
+.product-card.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+} */
+
+.product-card {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 130px; /* Keep the image contained */
+  max-height: 130px; /* Keep the image contained */
+  object-fit: contain; /* Maintain the aspect ratio */
+  border-radius: 4px; /* Add slight rounding for aesthetics */
+  margin-bottom: 10px; /* Add space between the image and details */
+}
+
+.product-card h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.product-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.product-card.selected {
+  width: 800px;
+  transform: scale(1.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.product-card.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
