@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, Observable } from 'rxjs';
+import { BehaviorSubject, filter, Observable, tap } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -29,39 +29,34 @@ export class FilterProductService {
     this.filters.maxPrice = maxPrice
     this.filters.minRating = minRating
   }
+
+  getFilteredData(): Observable<Product[]> {
+    return this.setFilteredData();
+  }
+  
+  private filteredProductsSubject = new BehaviorSubject<Product[]>([]);
+  filteredProducts$ = this.filteredProductsSubject.asObservable();
+
   setFilteredData(): Observable<Product[]> {
-    // return this.http.get<Product[]>(this.url+`/filters?categoryName=${this.filters.category}&brand=${this.filters.brand}&minPrice=${this.filters.minPrice}&maxPrice=${this.filters.maxPrice}&minRating=${this.filters.minRating}`)
-    // const params = new HttpParams().append('categoryName', this.filters.category).append('brand', this.filters.brand)
-    const params = new HttpParams().appendAll({
-      'categoryName': this.filters.category,
-      'brand': this.filters.brand,
+  const params = new HttpParams().appendAll({
+    'categoryName': this.filters.category.join(','),
+      'brand': this.filters.brand.join(','),
       'minPrice': this.filters.minPrice,
       'maxPrice': this.filters.maxPrice,
       'minRating': this.filters.minRating
-    })
-    
+  });
+
     console.log("Brands: "+params.get('brand')+" from filter service");
     console.log("Categories: "+params.get('categoryName')+" from filter service")
     console.log("MinPrice: "+params.get('minPrice')+" from filter service")
     console.log("Maxprice: "+params.get('maxPrice')+" from filter service")
     console.log("MinRating: "+params.get('minRating')+" from filter service")
     console.log(`Params: ${params}`)
-    return this.http.get<Product[]>(this.url+`/filters`, {params: params})
-  }
 
-  getFilteredData() {
-    setTimeout(() => {
-      this.setFilteredData().subscribe(
-        (data) => {
-          console.log("Data fetched from FilterService getFilterMethod()", data);
-          this.data = data
-          console.log(this.data);
-          
-        },
-        (error) => console.log(error)
-      )
-    }, 1000);
-    return this.data
-  }
+  return this.http.get<Product[]>(this.url + `/filters`, { params }).pipe(
+    tap((products) => {this.filteredProductsSubject.next(products);
+      console.log(products);})    
+  );
+}
 
 }

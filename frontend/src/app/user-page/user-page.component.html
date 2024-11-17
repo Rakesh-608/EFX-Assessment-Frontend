@@ -1,4 +1,104 @@
+<app-top-navbar />
+<div class="user-page">
+  <aside class="sidebar">
+    <div>
+        <button (click)="applyFilter()" class="filter-btn">
+          Apply Filter
+        </button>
+    </div>
+    
+    <div class="filter-section">
+      <button (click)="toggleDropdown('brandDropdown')" class="filter-btn">
+        Brand
+      </button>
+      <div *ngIf="showDropdowns['brandDropdown']" class="dropdown">
+        <ul>
+          <li *ngFor="let brand of brands">
+            <mat-checkbox
+              [checked]="selectedBrands.includes(brand)"
+              (change)="onCheckboxChange('brand', brand, $event.checked)"
+            >
+              {{ brand }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<app-top-navbar/>
-<app-side-navbar/>
-<app-main-body/>
+    <div class="filter-section">
+      <button (click)="toggleDropdown('ratingDropdown')" class="filter-btn">
+        Rating
+      </button>
+      <div *ngIf="showDropdowns['ratingDropdown']" class="dropdown">
+        <ul>
+          <li *ngFor="let rating of ratings">
+            <mat-checkbox
+              [checked]="selectedRatings.includes(rating)"
+              (change)="onCheckboxChange('rating', rating, $event.checked)"
+            >
+              {{ rating }} Stars
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <button (click)="toggleDropdown('categoryDropdown')" class="filter-btn">
+        Category
+      </button>
+      <div *ngIf="showDropdowns['categoryDropdown']" class="dropdown">
+        <ul>
+          <li *ngFor="let category of categories">
+            <mat-checkbox
+              [checked]="selectedCategories.includes(category)"
+              (change)="onCheckboxChange('category', category, $event.checked)"
+            >
+              {{ category }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <button (click)="toggleDropdown('priceDropdown')" class="filter-btn">
+        Price
+      </button>
+      <div *ngIf="showDropdowns['priceDropdown']" class="dropdown">
+        <ul>
+          <li *ngFor="let price of prices">
+            <mat-checkbox
+              [checked]="selectedPrices.includes(price)"
+              (change)="onCheckboxChange('price', price, $event.checked)"
+            >
+              {{ price }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <main class="product-list">
+    <div *ngIf="products.length > 0; else noProducts">
+      <div
+        class="product-card"
+        *ngFor="let product of products"
+        [ngClass]="{
+          blurred: selectedProductId && !isProductSelected(product.id)
+        }"
+        (click)="onSelectProduct(product.id)"
+      >
+        <h3>{{ product.productName }}</h3>
+        <img [src]="product.imageUrl" alt="{{ product.productName }}" />
+        <p>{{ product.price }}</p>
+        <p *ngIf="isProductSelected(product.id)">{{ product.description }}</p>
+      </div>
+    </div>
+    <ng-template #noProducts>
+      <p class="no-products">No products match the selected filters.</p>
+    </ng-template>
+  </main>
+</div>
+
