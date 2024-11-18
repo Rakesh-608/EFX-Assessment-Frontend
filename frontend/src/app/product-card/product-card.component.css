@@ -66,6 +66,19 @@
   font-size: 14px;
 }
 
+.product-card ul {
+  list-style-type: disc; 
+  margin-left: 20px; 
+  padding-left: 0; 
+}
+
+.product-card li {
+  text-align: left; 
+  margin-bottom: 8px;
+  font-size: 16px; 
+  line-height: 1.5; 
+}
+
 .product-card.selected {
   width: 800px;
   transform: scale(1.1);

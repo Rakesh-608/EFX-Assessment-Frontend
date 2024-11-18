@@ -50,7 +50,6 @@
 
         <div>
           <label for="categoryName">Category</label>
-          <!-- <input id="categoryName" formControlName="categoryName" /> -->
           <select formControlName="categoryName">
             <option value="" disabled>Choose a Category</option>
             <option *ngFor="let c of categories" [ngValue]="c">{{ c }}</option>
