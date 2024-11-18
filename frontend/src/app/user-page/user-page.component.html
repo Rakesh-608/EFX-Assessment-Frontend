@@ -1,6 +1,11 @@
 <app-top-navbar />
 <div class="user-page">
   <aside class="sidebar">
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Search..." />
+      <button onclick="searchFunction()">Search</button>
+    </div>
+    
     <div>
         <button (click)="applyFilter()" class="filter-btn">
           Apply Filter
