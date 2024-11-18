@@ -19,11 +19,22 @@ export class ProductCardComponent {
   @Output() selectProduct = new EventEmitter<void>();
 
   // Emit event on click
+  
+
+  pd: string[] = [];
+
+  ngOnInit(): void {
+    if (this.product.description) {
+      this.pd = this.product.description
+        .split('.')
+        .map((p) => p.trim())
+        .filter((p) => p);
+    }
+  }
+
   onSelect() {
     this.selectProduct.emit();
   }
-
-
 
   isInCart = false;
   toggleCart() {

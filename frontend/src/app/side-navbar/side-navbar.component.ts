@@ -131,7 +131,7 @@ export class SideNavbarComponent {
       }
     }
 
-    console.log(`Selected ${filterType}:`, selectedArray);
+    console.log(`Selected ₹${filterType}:`, selectedArray);
   }
 
   onPriceChange(): void {
