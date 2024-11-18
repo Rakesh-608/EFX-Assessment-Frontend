@@ -39,12 +39,9 @@ export class ProductCardComponent {
   isInCart = false;
   toggleCart() {
     this.isInCart = !this.isInCart;
-    // You can add additional logic here to handle adding/removing from the cart
     if (this.isInCart) {
-      // Logic for adding item to cart
       console.log('Item added to cart');
     } else {
-      // Logic for removing item from cart
       console.log('Item removed from cart');
     }
   }

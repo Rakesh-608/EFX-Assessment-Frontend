@@ -68,7 +68,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern(/\.(jpg|png)$/i), // Ensures the URL ends with .jpg or .png
+          Validators.pattern(/\.(jpg|png|jpeg)$/i), // Ensures the URL ends with .jpg or .png
         ],
       ],
       rating: [
