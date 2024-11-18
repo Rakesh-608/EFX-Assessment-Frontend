@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product';
 import { ProductService } from '../product.service';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
-  imports: [TopNavbarComponent, ReactiveFormsModule, CommonModule, MatIconModule],
+  imports: [TopNavbarComponent, ReactiveFormsModule, CommonModule, MatIconModule, RouterLink],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
 })
@@ -18,6 +19,24 @@ export class AdminPageComponent {
   updateItem!: FormGroup;
   updatedProduct: Product | undefined;
   deleteForm!: FormGroup;
+  router!: Router;
+
+  addproductFormDropdown= false;
+  updateProductFormDropdown= false;
+  deleteProductFormDropdown= false;
+
+  showAddProductForm(){
+    this.addproductFormDropdown=!this.addproductFormDropdown;
+    this.router.navigate(['/add-product-form']);
+  }
+
+  showUpdateProduct(){
+    this.updateProductFormDropdown=!this.updateProductFormDropdown;
+  }
+
+  showDeleteProduct(){
+    this.deleteProductFormDropdown=!this.deleteProductFormDropdown;
+  }
 
   constructor(private fb: FormBuilder, private productService: ProductService) {}
 
@@ -29,7 +48,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.min(0), // Ensures the price is non-negative
+          Validators.min(0),
         ],
       ],
       categoryName: ['', Validators.required],
@@ -38,7 +57,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern(/\.(jpg|png|jpeg)$/i), // Ensures the URL ends with .jpg or .png
+          Validators.pattern(/\.(jpg|png|jpeg)$/i),
         ],
       ],
       rating: [
@@ -46,7 +65,7 @@ export class AdminPageComponent {
         [
           Validators.required,
           Validators.min(0),
-          Validators.max(5), // Rating between 0 and 5
+          Validators.max(5),
         ],
       ],
     });
@@ -59,7 +78,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.min(0), // Ensures the price is non-negative
+          Validators.min(0),
         ],
       ],
       categoryName: ['', Validators.required],
@@ -68,7 +87,7 @@ export class AdminPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern(/\.(jpg|png|jpeg)$/i), // Ensures the URL ends with .jpg or .png
+          Validators.pattern(/\.(jpg|png|jpeg)$/i),
         ],
       ],
       rating: [
@@ -76,7 +95,7 @@ export class AdminPageComponent {
         [
           Validators.required,
           Validators.min(0),
-          Validators.max(5), // Rating between 0 and 5
+          Validators.max(5),
         ],
       ],
     });
@@ -120,7 +139,6 @@ export class AdminPageComponent {
           console.error('Error updating product:', error);
         }
       );
-      // Add your delete logic here
     } else {
       console.log('Form is invalid');
     }

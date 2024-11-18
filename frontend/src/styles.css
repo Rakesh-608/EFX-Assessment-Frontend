@@ -1,34 +1,30 @@
-/* Reset body margins to ensure no unwanted spacing */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Container for the main layout */
 .main-container {
   display: flex;
-  height: 100vh; /* Full height */
+  height: 100vh;
   flex-direction: row;
-  padding-top: 60px; /* Add space to prevent overlap with top navbar */
+  padding-top: 60px;
 }
 
-/* Top navbar styling */
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  background-color: #007bff; /* Navbar background color */
+  background-color: #007bff; 
   color: white;
-  position: fixed; /* Fixed at the top */
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
-  height: 60px; /* Height of the top navbar */
-  z-index: 1000; /* Ensure it's above the sidebar */
+  height: 60px; 
+  z-index: 1000; 
 }
-
-/* Navbar content (branding and search box) */
 .navbar-content {
   display: flex;
   align-items: center;
@@ -54,46 +50,40 @@ body {
   height: auto;
 }
 
-/* Material form field (Search Box) */
 .mat-form-field {
   width: 100%;
   max-width: 300px;
   transition: border-color 0.3s ease;
 }
 
-/* Make the search box background white and border thicker */
 .mat-form-field .mat-form-field-outline {
-  border-width: 10px; /* Thicker border */
-  border-color: white; /* White border color by default */
+  border-width: 10px;
+  border-color: white; 
 }
 
 .mat-form-field .mat-input-element {
-  background-color: white; /* Set the background to white */
-  color: #007bff; /* Text color inside the search box */
-}
-
-/* Change border color to blue when the input is focused */
+  background-color: white; 
+  color: #007bff; 
+  }
 .mat-form-field.focus .mat-form-field-outline {
-  border-color: #007bff; /* Blue border on focus */
+  border-color: #007bff; 
 }
 
 .mat-form-field:hover .mat-form-field-outline-start,
 .mat-form-field:hover .mat-form-field-outline-end {
-  border-color: #3ba7ff; /* Change border color on hover */
+  border-color: #3ba7ff; 
 }
-
-/* Navbar action buttons (Login and Cart) */
 .navbar-actions button {
-  color: #007bff; /* Text color set to blue by default */
-  background-color: white; /* White background */
-  border: 1px solid #007bff; /* Blue border */
+  color: #007bff; 
+  background-color: white; 
+  border: 1px solid #007bff; 
   transition: background-color 0.3s ease, color 0.3s ease;
   padding: 0.5rem 1rem;
 }
 
 .navbar-actions button:hover {
-  background-color: #007bff; /* Blue background on hover */
-  color: white; /* White text on hover */
+  background-color: #007bff; 
+  color: white;
 }
 
 .navbar-actions button mat-icon {
@@ -102,5 +92,5 @@ body {
 }
 
 .navbar-actions button:hover mat-icon {
-  color: white; /* White icon color on hover */
+  color: white; 
 }

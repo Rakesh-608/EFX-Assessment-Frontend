@@ -1,0 +1,121 @@
+<div class="add-item">
+    <form
+      [formGroup]="addItem"
+      (ngSubmit)="onSubmit()"
+      class="add-item-group"
+    >
+      <fieldset>
+        <legend>Add an item</legend>
+
+        <div>
+          <label for="productName">Product Name</label>
+          <input id="productName" formControlName="productName" />
+          <div
+            *ngIf="
+              addItem.get('productName')?.invalid &&
+              addItem.get('productName')?.touched
+            "
+            class="warning"
+          >
+            *Product Name is required.
+          </div>
+        </div>
+
+        <div>
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description"></textarea>
+          <div
+            *ngIf="
+              addItem.get('description')?.invalid &&
+              addItem.get('description')?.touched
+            "
+            class="warning"
+          >
+            *Description is required.
+          </div>
+        </div>
+
+        <div>
+          <label for="price">Price</label>
+          <input id="price" type="number" formControlName="price" />
+          <div
+            *ngIf="
+              addItem.get('price')?.invalid && addItem.get('price')?.touched
+            "
+            class="warning"
+          >
+            *Enter a valid price (non-negative).
+          </div>
+        </div>
+
+        <div>
+          <label for="categoryName">Category</label>
+          <!-- <input id="categoryName" formControlName="categoryName" /> -->
+          <select formControlName="categoryName">
+            <option value="" disabled>Choose a Category</option>
+            <option *ngFor="let c of categories" [ngValue]="c">{{ c }}</option>
+          </select>
+          <div
+            *ngIf="
+              addItem.get('categoryName')?.invalid &&
+              addItem.get('categoryName')?.touched
+            "
+            class="warning"
+          >
+            *Category is required.
+          </div>
+        </div>
+
+        <div>
+          <label for="brand">Brand</label>
+          <input id="brand" formControlName="brand" />
+          <div
+            *ngIf="
+              addItem.get('brand')?.invalid && addItem.get('brand')?.touched
+            "
+            class="warning"
+          >
+            *Brand is required.
+          </div>
+        </div>
+
+        <div>
+          <label for="imageUrl">Image URL</label>
+          <input id="imageUrl" type="url" formControlName="imageUrl" />
+          <div
+            *ngIf="
+              addItem.get('imageUrl')?.invalid &&
+              addItem.get('imageUrl')?.touched
+            "
+            class="warning"
+          >
+            *Enter a valid URL ending in .png or .jpg.
+          </div>
+        </div>
+
+        <div>
+          <label for="rating">Rating</label>
+          <input
+            id="rating"
+            type="number"
+            formControlName="rating"
+            min="0"
+            max="5"
+            step="0.1"
+          />
+          <div
+            *ngIf="
+              addItem.get('rating')?.invalid && addItem.get('rating')?.touched
+            "
+            class="warning"
+          >
+            *Enter a valid rating (0 to 5).
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" [disabled]="addItem.invalid">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>

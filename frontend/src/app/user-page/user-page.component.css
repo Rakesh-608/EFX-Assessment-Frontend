@@ -1,11 +1,10 @@
-/* Layout structure */
 .user-page {
   display: flex;
   height: 100vh;
-  margin-top: 60px; /* Space for top navbar */
+  margin-top: 60px;
 }
 
-/* Sidebar styling */
+
 .sidebar {
   position: fixed;
   top: 60px;
@@ -19,12 +18,12 @@
   overflow-y: auto;
 }
 
-/* Filter section styling */
+
 .filter-section {
   margin-bottom: 15px;
 }
 
-/* Filter buttons */
+
 .filter-btn {
   width: 100%;
   padding: 10px;
@@ -42,7 +41,7 @@
   background-color: #0056b3;
 }
 
-/* Dropdown styling */
+
 .dropdown {
   margin-top: 10px;
   padding: 10px;
@@ -66,15 +65,15 @@
   background-color: #f1f1f1;
 }
 
-/* Main content area */
+
 .product-list {
   flex: 1;
-  margin-left: 280px; /* Match sidebar width */
+  margin-left: 280px;
   padding: 20px;
   overflow-y: auto;
 }
 
-/* Product grid */
+
 .product-list > div {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -82,7 +81,7 @@
   padding: 10px;
 }
 
-/* Product card styles */
+
 .product-card {
   background: white;
   border-radius: 8px;
@@ -110,7 +109,6 @@
   pointer-events: none;
 }
 
-/* Apply Filter Button Styling */
 :host ::ng-deep button.mat-raised-button {
   background-color: #28a745;
   color: white;
@@ -138,13 +136,11 @@
   box-shadow: none;
 }
 
-/* Checkbox styling */
 :host ::ng-deep .mat-checkbox {
   display: block;
   margin: 5px 0;
 }
 
-/* Price Range Slider styling */
 .mat-slider {
   width: 100%;
   margin-top: 10px;
@@ -169,13 +165,11 @@
   display: none;
 }
 
-/* Price Slider */
 .price-slider {
   width: 100%;
   margin: 15px 0;
 }
 
-/* Min and Max Price Display */
 .price-range-label {
   font-size: 14px;
   color: #333;
@@ -188,7 +182,6 @@
   margin-top: 10px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .sidebar {
     position: static;
@@ -206,7 +199,6 @@
   }
 }
 
-/* No products message */
 .no-products {
   text-align: center;
   padding: 40px;
