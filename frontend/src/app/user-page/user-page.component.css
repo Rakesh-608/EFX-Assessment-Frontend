@@ -1,9 +1,3 @@
-/* div{
-    display: flex;
-    flex-direction: row;
-} */
-
-/* Layout structure */
 .user-page {
     display: flex;
     height: 100vh;
@@ -24,7 +18,7 @@
     overflow-y: auto;
   }
 
-  .search-container {
+/* .search-container {
     position: relative;
 }
 input[type="text"] {
@@ -49,7 +43,7 @@ button {
     padding: 8px 15px;
     border-radius: 15px;
     cursor: pointer;
-}
+} */
   
   /* Filter section styling */
   .filter-section {

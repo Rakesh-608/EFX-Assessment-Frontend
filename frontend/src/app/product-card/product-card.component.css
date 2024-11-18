@@ -49,11 +49,11 @@
 
 .product-card img {
   width: 100%;
-  max-width: 130px; 
-  max-height: 130px; 
-  object-fit: contain; 
-  border-radius: 4px; 
-  margin-bottom: 10px; 
+  max-width: 130px; /* Keep the image contained */
+  max-height: 130px; /* Keep the image contained */
+  object-fit: contain; /* Maintain the aspect ratio */
+  border-radius: 4px; /* Add slight rounding for aesthetics */
+  margin-bottom: 10px; /* Add space between the image and details */
 }
 
 .product-card h2 {

@@ -1,7 +1,10 @@
 <app-top-navbar />
 <main>
   <section>
-    <div class="add-item">
+
+    <button (click)="showAddProductForm()" > Add a product </button>
+    <a  [routerLink]="['/add-product-form']">Add a product</a>
+    <div class="add-item" *ngIf="addproductFormDropdown">
       <form
         [formGroup]="addItem"
         (ngSubmit)="onSubmit()"
@@ -119,7 +122,9 @@
       </form>
     </div>
 
-    <div class="update-item">
+
+    <button (click)="showUpdateProduct()"> Update a product </button>
+    <div class="update-item" *ngIf="updateProductFormDropdown">
       <form
         [formGroup]="updateItem"
         (ngSubmit)="onSubmit()"
@@ -254,7 +259,10 @@
         </fieldset>
       </form>
     </div>
-    <div class="update-item">
+
+
+    <button (click)="showUpdateProduct()"> Delete a product </button>
+    <div class="update-item" *ngIf="deleteProductFormDropdown">
       <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
         <fieldset>
             <legend>Delete an item</legend>

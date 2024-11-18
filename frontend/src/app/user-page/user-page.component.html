@@ -2,10 +2,10 @@
 <div class="user-page">
   <aside class="sidebar">
     <div class="search-container">
-      <input type="text" id="search-bar" placeholder="Search..." />
-      <button onclick="searchFunction()">Search</button>
+      <input type="text" id="search-bar" placeholder="Search..." [(ngModel)]="search_query" [ngModelOptions]="{standalone: true}"/>
+      <button (click)="searchFunction(search_query)">Search</button>
     </div>
-    
+
     <div>
         <button (click)="applyFilter()" class="filter-btn">
           Apply Filter
@@ -106,4 +106,3 @@
     </ng-template>
   </main>
 </div>
-

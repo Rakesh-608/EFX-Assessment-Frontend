@@ -1,29 +1,26 @@
-/* Sidebar styling */
 .sidebar {
-  position: fixed; /* Fix the sidebar to the left */
-  top: 60px;        /* Below the top navbar (60px is the height of the navbar) */
+  position: fixed;
+  top: 60px;
   left: 0;
-  width: 250px;     /* Sidebar width */
-  height: calc(100vh - 60px); /* Full height minus the top navbar height */
-  background-color: #007bff; /* Same background color as top navbar */
-  color: white;     /* Same text color as top navbar */
+  width: 250px;
+  height: calc(100vh - 60px);
+  background-color: #007bff;
+  color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  z-index: 999;    /* Ensure it's below the top navbar */
-  overflow-y: auto; /* Enable vertical scrolling if needed */
+  z-index: 999; 
+  overflow-y: auto;
 }
 
-/* Each filter section inside the sidebar */
 .filter-section {
   margin-bottom: 15px;
 }
 
-/* Filter buttons inside the sidebar */
 .filter-btn {
   width: 100%;
   padding: 10px;
-  background-color: #007bff; /* Blue background for the filter buttons */
-  color: white; /* White text */
+  background-color: #007bff;
+  color: white;
   border: none;
   text-align: left;
   font-size: 16px;
@@ -32,10 +29,10 @@
 }
 
 .filter-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
-/* Dropdown styling inside sidebar */
+
 .dropdown {
   margin-top: 10px;
   padding: 10px;
@@ -59,14 +56,13 @@
   background-color: #f1f1f1;
 }
 
-/* Optional: Adjust layout for small screens */
 @media (max-width: 768px) {
   .sidebar {
-    width: 200px; /* Make sidebar narrower on small screens */
+    width: 200px;
   }
   
   .main-content {
-    margin-left: 0; /* Remove the left margin on small screens */
+    margin-left: 0; 
   }
 }
 
