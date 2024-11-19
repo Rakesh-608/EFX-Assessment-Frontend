@@ -14,8 +14,12 @@ export class FilterProductService {
   data!: Product[]
   categoryList: string[]=[]
   filters = {category: [''], brand: [''], minPrice: 0, maxPrice: 1000000, minRating: -1}
+  search_query = ""
 
-  
+  getProductByName(search_query: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.url}/search/${search_query}`);
+  }
+
   setFilters(
     category: string[],
     brand: string[],

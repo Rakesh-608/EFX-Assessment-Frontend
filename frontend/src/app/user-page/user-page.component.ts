@@ -4,12 +4,17 @@ import { FilterProductService } from '../filter-product.service';
 import { Product } from '../../models/product';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
+=======
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+>>>>>>> b6ee0ad6b3f06743515c4a3a105cfb0aeb46a42a
 
 @Component({
   selector: 'app-user-page',
   standalone: true,
-  imports: [TopNavbarComponent, MatCheckbox, CommonModule],
+  imports: [TopNavbarComponent, MatCheckbox, CommonModule, FormsModule],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.css'
 })
@@ -20,8 +25,9 @@ export class UserPageComponent {
 
   brands = ['Brand A', 'Brand B', 'Brand C', 'Brand D'];
   ratings = [1, 2, 3, 4, 5];
-  categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
+  categories = ['Electronics', 'Footwear','Clothing', 'Kitchenware', 'Furniture'];
   prices = [10000, 20000, 30000, 40000, 50000];
+  search_query: string = '';
 
   showDropdowns: { [key: string]: boolean } = {
     brandDropdown: false,
@@ -40,6 +46,16 @@ export class UserPageComponent {
   ngOnInit(): void {
     this.filterService.setFilteredData().subscribe(
       (data: Product[]) => {
+        this.products = data;
+      },
+      (error) => console.error('Error fetching products', error)
+    );
+  }
+
+  searchFunction(search_query: string): void{
+    this.filterService.getProductByName(search_query).subscribe(
+      (data: Product[]) => {
+        console.log(data);
         this.products = data;
       },
       (error) => console.error('Error fetching products', error)

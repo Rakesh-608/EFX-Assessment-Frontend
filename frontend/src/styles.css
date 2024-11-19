@@ -28,6 +28,7 @@ body {
 .navbar-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -44,11 +45,11 @@ body {
   color: #dfe6e9;
 }
 
-.search-box {
+/* .search-box {
   padding-top: 20px;
   flex-grow: 1;
   height: auto;
-}
+} */
 
 .mat-form-field {
   width: 100%;
