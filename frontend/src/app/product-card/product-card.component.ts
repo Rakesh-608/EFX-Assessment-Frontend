@@ -16,9 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class ProductCardComponent {
   @Input() product!: Product;
   @Input() isSelected: boolean = false;
-  @Output() selectProduct = new EventEmitter<void>();
-
-  // Emit event on click
+  @Output() selectProduct = new EventEmitter<void>()
   
 
   pd: string[] = [];

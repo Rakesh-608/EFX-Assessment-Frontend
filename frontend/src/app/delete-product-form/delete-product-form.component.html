@@ -1,0 +1,27 @@
+<div class="admin-product-list">
+  <h2>Delete Products</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>
+          <button (click)="deleteProduct(product.id)" class="delete-btn">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

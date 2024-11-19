@@ -89,11 +89,14 @@
           blurred: selectedProductId && !isProductSelected(product.id)
         }"
         (click)="onSelectProduct(product.id)"
-      >
+      > 
+      <!-- (click)="onSelectProduct(product.id)" 
+       (click)="navigateToProductCard(product)" -->
         <h3>{{ product.productName }}</h3>
         <img [src]="product.imageUrl" alt="{{ product.productName }}" />
         <p>{{ product.price }}</p>
         <p *ngIf="isProductSelected(product.id)">{{ product.description }}</p>
+
       </div>
     </div>
     <ng-template #noProducts>

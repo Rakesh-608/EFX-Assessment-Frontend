@@ -6,7 +6,7 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'app-add-product-form',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './add-product-form.component.html',
   styleUrl: './add-product-form.component.css'
 })
@@ -54,7 +54,10 @@ export class AddProductFormComponent {
     if (this.addItem.valid) {
       console.log('Form Submitted', this.addItem.value);
       this.productService.addItem(this.addItem.value).subscribe(
-        (data) => console.log("Fetched data", data),
+        (data) => {
+          console.log("Fetched data", data);
+          alert('Product added successfully.');
+        },
         (error) => console.log(error)
       )
     }

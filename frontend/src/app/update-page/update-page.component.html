@@ -1,0 +1,52 @@
+<div class="admin-product-list">
+    <h2>Update Products</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.brand }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>
+            <button (click)="editProduct(product)" class="edit-btn">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedProduct" class="update-form">
+      <h3>Update Product</h3>
+      <form (ngSubmit)="updateProduct()">
+        <label>
+          Product Name:
+          <input [(ngModel)]="selectedProduct.productName" name="name" required />
+        </label>
+        <label>
+          Brand:
+          <input [(ngModel)]="selectedProduct.brand" name="brand" required />
+        </label>
+        <label>
+          Price:
+          <input [(ngModel)]="selectedProduct.price" name="price" type="number" required />
+        </label>
+        <label>
+            Description:
+            <input [(ngModel)]="selectedProduct.description" name="description" type="text" required />
+          </label>
+        <div class="form-actions">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" (click)="cancelEdit()" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

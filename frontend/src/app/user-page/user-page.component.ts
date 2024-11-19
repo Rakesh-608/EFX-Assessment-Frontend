@@ -4,6 +4,7 @@ import { FilterProductService } from '../filter-product.service';
 import { Product } from '../../models/product';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
@@ -34,7 +35,7 @@ export class UserPageComponent {
   selectedCategories: string[] = [];
   selectedPrices: number[] = [];
 
-  constructor(private filterService: FilterProductService) {}
+  constructor(private filterService: FilterProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.filterService.setFilteredData().subscribe(
@@ -145,6 +146,10 @@ export class UserPageComponent {
       },
       (error) => console.error('Error fetching filtered products', error)
     );
+  }
+
+  navigateToProductCard(product:Product){
+    this.router.navigate(['./product-card'])
   }
   
 
